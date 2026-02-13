@@ -15,14 +15,14 @@ class Starfield {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
   private stars: Star[] = [];
-  private readonly FPS = 60;
   private readonly numStars: number;
   private mouse: MousePosition = { x: 0, y: 0 };
   private isDarkMode: boolean;
+  private lastTime: number = 0;
 
   constructor(canvasId: string, numStars: number = 100, isDarkMode = true) {
     const canvas = document.getElementById(
-      canvasId
+      canvasId,
     ) as HTMLCanvasElement | null;
     if (!canvas) {
       throw new Error(`Canvas not found`);
@@ -74,38 +74,52 @@ class Starfield {
 
   private draw(): void {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.globalCompositeOperation = "lighter";
 
+    const starColor = this.isDarkMode ? "#fff" : "#333";
+
+    this.ctx.fillStyle = starColor;
     this.stars.forEach((s) => {
-      this.ctx.fillStyle = this.isDarkMode ? "#fff" : "#333";
       this.ctx.beginPath();
       this.ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
       this.ctx.fill();
-      this.ctx.strokeStyle = "black";
-      this.ctx.stroke();
     });
 
-    this.ctx.beginPath();
-    this.stars.forEach((starI) => {
-      this.ctx.moveTo(starI.x, starI.y);
-      if (this.distance(this.mouse, starI) < 150) {
+    const maxDist = 150;
+    this.ctx.lineWidth = 0.5;
+    for (let i = 0; i < this.stars.length; i++) {
+      const starI = this.stars[i];
+      const mouseDist = this.distance(this.mouse, starI);
+      if (mouseDist < maxDist) {
+        const opacity = 1 - mouseDist / maxDist;
+        this.ctx.strokeStyle = this.isDarkMode
+          ? `rgba(255,255,255,${opacity})`
+          : `rgba(51,51,51,${opacity})`;
+        this.ctx.beginPath();
+        this.ctx.moveTo(starI.x, starI.y);
         this.ctx.lineTo(this.mouse.x, this.mouse.y);
+        this.ctx.stroke();
       }
-      this.stars.forEach((starII) => {
-        if (this.distance(starI, starII) < 150) {
+      for (let j = i + 1; j < this.stars.length; j++) {
+        const starII = this.stars[j];
+        const dist = this.distance(starI, starII);
+        if (dist < maxDist) {
+          const opacity = 1 - dist / maxDist;
+          this.ctx.strokeStyle = this.isDarkMode
+            ? `rgba(255,255,255,${opacity})`
+            : `rgba(51,51,51,${opacity})`;
+          this.ctx.beginPath();
+          this.ctx.moveTo(starI.x, starI.y);
           this.ctx.lineTo(starII.x, starII.y);
+          this.ctx.stroke();
         }
-      });
-    });
-    this.ctx.lineWidth = 0.05;
-    this.ctx.strokeStyle = this.isDarkMode ? "#FFF" : "#333";
-    this.ctx.stroke();
+      }
+    }
   }
 
-  private update(): void {
+  private update(dt: number): void {
     this.stars.forEach((s) => {
-      s.x += s.vx / this.FPS;
-      s.y += s.vy / this.FPS;
+      s.x += s.vx * dt;
+      s.y += s.vy * dt;
 
       if (s.x < 0 || s.x > this.canvas.width) s.vx = -s.vx;
       if (s.y < 0 || s.y > this.canvas.height) s.vy = -s.vy;
@@ -113,19 +127,24 @@ class Starfield {
   }
 
   public start(): void {
-    const tick = () => {
+    const tick = (time: number) => {
+      const dt = (time - this.lastTime) / 1000;
+      this.lastTime = time;
       this.draw();
-      this.update();
+      this.update(dt);
       requestAnimationFrame(tick);
     };
-    requestAnimationFrame(tick);
+    requestAnimationFrame((time) => {
+      this.lastTime = time;
+      requestAnimationFrame(tick);
+    });
   }
 }
 
 export default function initStarfield(
   canvasId: string,
   numStars = 100,
-  isDarkMode = true
+  isDarkMode = true,
 ) {
   const starfield = new Starfield(canvasId, numStars, isDarkMode);
   starfield.start();
