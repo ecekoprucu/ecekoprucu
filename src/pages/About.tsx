@@ -11,10 +11,10 @@ export const AboutPage = () => {
       <div className="p-5 bg-gray-300 dark:bg-gray-700 ">
         <motion.p
           ref={textRef}
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={inView ? { opacity: 1, scale: 1 } : undefined}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="w-full text-gray-800 dark:text-gray-200"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : undefined}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full text-gray-800 dark:text-gray-200 font-poppins"
         >
           I am a self-taught developer from İzmir, Turkey. <br />
           <br /> My professional career is a diverse journey, I’ve worked in

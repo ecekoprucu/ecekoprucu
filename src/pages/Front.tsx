@@ -38,10 +38,10 @@ export const FrontPage = () => {
           id="canvas"
           className="bg-gray-300 dark:bg-gray-600 h-screen w-screen"
         />
-        <h1 className="absolute text-gray-600 dark:text-gray-200">
+        <h1 className="absolute font-kranky text-gray-600 dark:text-neutral-100 text-shadow-lg text-shadow-neutral-100 dark:text-shadow-neutral-800">
           <Typewriter
             text="Ece Köprücü - React Front End Developer"
-            delay={100}
+            delay={75}
           />
         </h1>
       </div>

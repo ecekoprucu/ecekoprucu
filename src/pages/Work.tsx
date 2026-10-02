@@ -16,7 +16,7 @@ export const WorkPage = () => {
   return (
     <section id="work">
       <Header />
-      <div className="w-screen min-h-[calc(100vh_-_3rem)] bg-gray-200 dark:bg-gray-700 px-3 py-6 flex flex-col items-center gap-10">
+      <div className="font-poppins w-screen min-h-[calc(100vh_-_3rem)] bg-gray-200 dark:bg-gray-700 px-3 py-6 flex flex-col items-center gap-10">
         <motion.div
           initial={{
             opacity: 0,
@@ -32,7 +32,7 @@ export const WorkPage = () => {
           className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg shadow-gray-500ß"
           whileHover={{
             scale: 1.025,
-            transition: { duration: 0.5 },
+            transition: { duration: 0.35 },
             backgroundColor: "#a8acda22",
           }}
         >
@@ -120,7 +120,7 @@ export const WorkPage = () => {
           className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
-            transition: { duration: 0.5 },
+            transition: { duration: 0.35 },
             backgroundColor: "#a8acda22",
           }}
         >
@@ -168,7 +168,7 @@ export const WorkPage = () => {
           className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
-            transition: { duration: 0.5 },
+            transition: { duration: 0.35 },
             backgroundColor: "#a8acda22",
           }}
         >
@@ -214,7 +214,7 @@ export const WorkPage = () => {
           className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
-            transition: { duration: 0.5 },
+            transition: { duration: 0.35 },
             backgroundColor: "#a8acda22",
           }}
         >
@@ -263,7 +263,7 @@ export const WorkPage = () => {
           className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
-            transition: { duration: 0.5 },
+            transition: { duration: 0.35 },
             backgroundColor: "#a8acda22",
           }}
         >
@@ -307,7 +307,7 @@ export const WorkPage = () => {
           className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
-            transition: { duration: 0.5 },
+            transition: { duration: 0.35 },
             backgroundColor: "#a8acda22",
           }}
         >
