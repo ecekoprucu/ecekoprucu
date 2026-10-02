@@ -6,6 +6,7 @@ import NotFoundPage from "../pages/NotFound";
 import { WorkPage } from "../pages/Work";
 import ScrollToTop from "../components/ScrollToTop";
 import CvPage from "../pages/CVPage";
+import KonamiCode from "../components/KonamiCode";
 
 export const AppRouter = () => {
   return (
@@ -45,6 +46,7 @@ export const AppRouter = () => {
           }
         />
       </Routes>
+      <KonamiCode />
     </BrowserRouter>
   );
 };
