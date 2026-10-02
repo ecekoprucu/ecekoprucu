@@ -60,7 +60,7 @@ export default function DinoGamePage() {
         obstacle.style.right = positionRef.current + "px";
       }
 
-      if (heightRef.current < 75 && positionRef.current > 525) {
+      if (heightRef.current < 50 && positionRef.current > 500) {
         alert("Game Over");
         gameOverRef.current = true;
         clearInterval(obstacleMove);
