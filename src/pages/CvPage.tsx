@@ -1,11 +1,14 @@
+import Header from "../components/Header";
+
 export default function CvPage() {
   return (
     <div
       style={{
-        height: "100vh",
+        height: "calc(100vh - 48px)",
         width: "100vw",
       }}
     >
+      <Header />
       <iframe
         height="100%"
         width="100%"

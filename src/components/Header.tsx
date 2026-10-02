@@ -11,7 +11,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   const [activeId, setActiveId] = useState<string>(
-    pathname === "/" ? "about" : pathname.substring(1)
+    pathname === "/" ? "about" : pathname.substring(1),
   );
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -21,7 +21,7 @@ export default function Header() {
       { id: "work", label: "Work" },
       { id: "cv", label: "CV" },
     ],
-    []
+    [],
   );
 
   const onClick = useCallback(
@@ -30,7 +30,7 @@ export default function Header() {
       const el = document.getElementById(id);
       if (!el) {
         if (id === "about") {
-          navigate("/");
+          navigate("/#about");
         } else {
           navigate(`/${id}`);
         }
@@ -38,7 +38,7 @@ export default function Header() {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     },
-    [navigate]
+    [navigate],
   );
 
   return (
