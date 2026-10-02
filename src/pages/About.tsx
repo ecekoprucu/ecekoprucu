@@ -37,6 +37,9 @@ export const AboutPage = () => {
           expertise, requiring compatibility with older systems and browsers. I
           am fluent in both English and Turkish and hold a valid work permit in
           Sweden.
+          <br />
+          <br />
+          This site includes confettis triggered via Konami Code.
         </motion.p>
       </div>
     </section>
