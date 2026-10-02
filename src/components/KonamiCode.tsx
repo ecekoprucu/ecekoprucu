@@ -45,7 +45,11 @@ export default function KonamiCode() {
 
   useEffect(() => {
     const handleKey = (e: { key: string }) => {
-      if (e.key === code[position]) {
+      if (
+        e.key === code[position] ||
+        (e.key === "B" && position === 8) ||
+        (e.key === "A" && position == 9)
+      ) {
         setPosition(position + 1);
         if (position + 1 === code.length) {
           frame(Date.now() + 1.5 * 1000);

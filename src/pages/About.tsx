@@ -3,8 +3,14 @@ import { useRef } from "react";
 
 export const AboutPage = () => {
   const textRef = useRef(null);
+  const textRef2 = useRef(null);
+  const textRef3 = useRef(null);
+  const textRef4 = useRef(null);
 
-  const inView = useInView(textRef, { once: true });
+  const inView1 = useInView(textRef, { once: true });
+  const inView2 = useInView(textRef2, { once: true });
+  const inView3 = useInView(textRef3, { once: true });
+  const inView4 = useInView(textRef4, { once: true });
 
   return (
     <section id="about">
@@ -12,17 +18,26 @@ export const AboutPage = () => {
         <motion.p
           ref={textRef}
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : undefined}
+          animate={inView1 ? { opacity: 1 } : undefined}
           transition={{ duration: 1, ease: "easeOut" }}
           className="w-full text-gray-800 dark:text-gray-200 font-poppins"
         >
-          I am a self-taught developer from İzmir, Turkey. <br />
-          <br /> My professional career is a diverse journey, I’ve worked in
-          industries such as healthcare, advertising and worked on control
-          panels, custom marketplaces etc. I began my career in small, dynamic
-          teams and have since progressed to collaborating with larger teams of
-          over 50 members, gaining valuable experience along the way. My primary
-          tech stack includes ReactJS, Redux, TypeScript, and Material-UI.
+          I am a self-taught developer from İzmir, Turkey.
+        </motion.p>
+        <br />
+        <motion.p
+          ref={textRef2}
+          initial={{ opacity: 0 }}
+          animate={inView2 ? { opacity: 1 } : undefined}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full text-gray-800 dark:text-gray-200 font-poppins"
+        >
+          My professional career is a diverse journey, I’ve worked in industries
+          such as healthcare, advertising and worked on control panels, custom
+          marketplaces etc. I began my career in small, dynamic teams and have
+          since progressed to collaborating with larger teams of over 50
+          members, gaining valuable experience along the way. My primary tech
+          stack includes ReactJS, Redux, TypeScript, and Material-UI.
           Additionally, I have hands-on experience with Ant Design (AntD),
           Styled Components, Tailwind CSS, Next.js, and Context API. For data
           integration, I have worked with both GraphQL and RESTful APIs. One of
@@ -31,19 +46,37 @@ export const AboutPage = () => {
           includes a wide range of charts—from timelines to bar, stacked, gauge,
           and pie charts. This experience has enhanced my ability to present
           complex data in intuitive and visually appealing formats.
-          <br />
-          <br />
+        </motion.p>
+        <br />
+        <motion.p
+          ref={textRef3}
+          initial={{ opacity: 0 }}
+          animate={inView3 ? { opacity: 1 } : undefined}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full text-gray-800 dark:text-gray-200 font-poppins"
+        >
           My latest project is called Local & Traveler. I've used Leaflet with
           OpenStreetMap for map components, SignalR for messaging and real time
           connections and Stripe for implementing payment.
-          <br /> <br /> Early in my career, I improved my core JavaScript skills
-          while developing multimedia advertisements for Turkey's largest news
-          agency. These ads were designed for users with low technological
-          expertise, requiring compatibility with older systems and browsers. I
-          am fluent in both English and Turkish and{" "}
+        </motion.p>
+        <br />
+        <motion.p
+          ref={textRef4}
+          initial={{ opacity: 0 }}
+          animate={inView4 ? { opacity: 1 } : undefined}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full text-gray-800 dark:text-gray-200 font-poppins"
+        >
+          Early in my career, I improved my core JavaScript skills while
+          developing multimedia advertisements for Turkey's largest news agency.
+          These ads were designed for users with low technological expertise,
+          requiring compatibility with older systems and browsers. I am fluent
+          in both English and Turkish and{" "}
           <b>hold a valid work permit in Sweden</b>.
-          <br />
-          <br />
+        </motion.p>
+        <br />
+
+        <motion.p>
           This site includes confettis triggered via <i>Konami Code</i>.
         </motion.p>
       </div>
