@@ -5,6 +5,7 @@ import Loader from "../components/Loader";
 import NotFoundPage from "../pages/NotFound";
 import { WorkPage } from "../pages/Work";
 import ScrollToTop from "../components/ScrollToTop";
+import CvPage from "../pages/CVPage";
 
 export const AppRouter = () => {
   return (
@@ -24,6 +25,14 @@ export const AppRouter = () => {
           element={
             <Suspense fallback={<Loader />}>
               <WorkPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="cv"
+          element={
+            <Suspense fallback={<Loader />}>
+              <CvPage />
             </Suspense>
           }
         />

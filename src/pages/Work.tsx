@@ -7,8 +7,10 @@ import {
   faStethoscope,
   faRectangleAd,
   faShirt,
+  faPeopleArrows,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router";
 
 export const WorkPage = () => {
   return (
@@ -25,7 +27,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 cursor-pointer shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.5 },
@@ -37,23 +39,44 @@ export const WorkPage = () => {
               <p className="font-bold text-gray-800 dark:text-gray-200 text-lg">
                 Bosphorus Industrial Software Solutions
               </p>
-              <FontAwesomeIcon
-                icon={faIndustry}
-                className="text-gray-800 dark:text-gray-200 text-2xl"
-              />
+              <div className="flex items-center gap-1.5">
+                <FontAwesomeIcon
+                  icon={faIndustry}
+                  className="text-gray-800 dark:text-gray-200 text-2xl"
+                />
+                <FontAwesomeIcon
+                  icon={faPeopleArrows}
+                  className="text-gray-800 dark:text-gray-200 text-2xl"
+                />
+              </div>
             </div>
             <p className="font-semibold text-gray-800 dark:text-gray-200 text-md">
               November 2023 - Current
             </p>
           </div>
           <p className="font-light text-gray-800 dark:text-gray-200 text-sm mt-2">
-            * Front end development of internal apps’ control panel platform:
+            * Front end development of internal apps’ control panel platform:{" "}
             <strong>Biss Admin Panel</strong> <br /> * Front end development of
             the internal chatbot web app: <strong>BiBot</strong> <br /> * Front
             end development of the bearing marketplace from scratch:{" "}
-            <strong>Bearing Online</strong> (https://bearingonline.net/)
-            <br /> * Front end development of factory control portal:{" "}
-            <strong>DigiFact & LogiFact</strong> <br />
+            <strong>Bearing Online</strong> ({" "}
+            <Link to="https://bearingonline.net/" target="_blank">
+              https://bearingonline.net/
+            </Link>
+            )
+            <br /> * Front end development of factory control portal & logistics
+            platform: <strong>DigiFact & LogiFact</strong> (
+            <Link target="_blank" to="https://bosphorusiss.com/platformlar">
+              https://bosphorusiss.com/platformlar
+            </Link>
+            )
+            <br />* Front end development of C2C Web platform:{" "}
+            <strong>Local & Traveler</strong> (
+            <Link to="https://localandtraveler.com" target="_blank">
+              https://localandtraveler.com
+            </Link>
+            )
+            <br />
             <br />
             <i>
               During my career in BISS, I’ve had a chance to create UIs of the
@@ -63,6 +86,8 @@ export const WorkPage = () => {
               solutions, mostly for logistics and factory management which
               requires data implementation in Charts and Tables. Using ChartJS
               and Material React Table for these projects.
+              <br /> Besides B2B projects, I'm working as the sole Front End
+              Developer of our first C2C Project: Local & Traveler
             </i>
           </p>
         </motion.div>
@@ -76,7 +101,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 cursor-pointer shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.5 },
@@ -122,7 +147,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 cursor-pointer shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.5 },
@@ -166,7 +191,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 cursor-pointer shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.5 },
@@ -213,7 +238,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 cursor-pointer shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.5 },
@@ -255,7 +280,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 cursor-pointer shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.5 },
