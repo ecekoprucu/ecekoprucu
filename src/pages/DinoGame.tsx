@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
 
 export default function DinoGamePage() {
@@ -13,6 +13,8 @@ export default function DinoGamePage() {
 
   const isJumpingRef = useRef(false);
   const jumpIntervalRef = useRef<ReturnType<typeof setInterval>>(undefined);
+
+  const [round, setRound] = useState(0);
 
   const jump = useCallback(() => {
     const dino = dinoRef.current;
@@ -44,6 +46,28 @@ export default function DinoGamePage() {
 
     jumpIntervalRef.current = dinoUp;
   }, []);
+
+  const resetGame = () => {
+    const dino = dinoRef.current;
+    const obstacle = obstacleRef.current;
+    const point = scoreRef.current;
+
+    if (!dino || !obstacle || !point) return;
+
+    clearInterval(jumpIntervalRef.current);
+
+    dino.style.bottom = "0px";
+    obstacle.style.right = "0px";
+    point.innerHTML = "0";
+
+    gameOverRef.current = false;
+    positionRef.current = 0;
+    heightRef.current = 0;
+    pointsRef.current = 0;
+    isJumpingRef.current = false;
+
+    setRound((r) => r + 1);
+  };
 
   useEffect(() => {
     return () => clearInterval(jumpIntervalRef.current);
@@ -84,11 +108,13 @@ export default function DinoGamePage() {
       clearInterval(obstacleMove);
       clearInterval(raisePoints);
     };
-  }, []);
+  }, [round]);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.code === "Space" && !e.repeat) jump();
+      if (e.code !== "Space") return;
+      e.preventDefault();
+      if (!e.repeat) jump();
     };
     const onTouchStart = () => jump();
 
@@ -126,6 +152,15 @@ export default function DinoGamePage() {
           >
             0
           </div>
+          <button
+            onClick={(e) => {
+              e.currentTarget.blur();
+              resetGame();
+            }}
+            className="w-full !text-black dark:!text-white border !border-black dark:!border-white !rounded-full px-5 py-2.5 mt-5 hover:bg-gray-300 dark:hover:bg-gray-600"
+          >
+            Reset
+          </button>
         </div>
       </div>
     </>
