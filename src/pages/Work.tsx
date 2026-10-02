@@ -29,7 +29,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg shadow-gray-500ß"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200  shadow-md shadow-gray-500 dark:shadow-gray-300"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.35 },
@@ -117,7 +117,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200  shadow-md shadow-gray-500 dark:shadow-gray-300"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.35 },
@@ -165,7 +165,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200  shadow-md shadow-gray-500 dark:shadow-gray-300"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.35 },
@@ -211,7 +211,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200  shadow-md shadow-gray-500 dark:shadow-gray-300"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.35 },
@@ -260,7 +260,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200  shadow-md shadow-gray-500 dark:shadow-gray-300"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.35 },
@@ -304,7 +304,7 @@ export const WorkPage = () => {
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200  shadow-md shadow-gray-500 dark:shadow-gray-300"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.35 },
