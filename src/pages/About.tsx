@@ -31,15 +31,20 @@ export const AboutPage = () => {
           includes a wide range of charts—from timelines to bar, stacked, gauge,
           and pie charts. This experience has enhanced my ability to present
           complex data in intuitive and visually appealing formats.
+          <br />
+          <br />
+          My latest project is called Local & Traveler. I've used Leaflet with
+          OpenStreetMap for map components, SignalR for messaging and real time
+          connections and Stripe for implementing payment.
           <br /> <br /> Early in my career, I improved my core JavaScript skills
           while developing multimedia advertisements for Turkey's largest news
           agency. These ads were designed for users with low technological
           expertise, requiring compatibility with older systems and browsers. I
-          am fluent in both English and Turkish and hold a valid work permit in
-          Sweden.
+          am fluent in both English and Turkish and{" "}
+          <b>hold a valid work permit in Sweden</b>.
           <br />
           <br />
-          This site includes confettis triggered via Konami Code.
+          This site includes confettis triggered via <i>Konami Code</i>.
         </motion.p>
       </div>
     </section>

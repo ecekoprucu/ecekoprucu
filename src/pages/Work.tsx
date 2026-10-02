@@ -20,14 +20,16 @@ export const WorkPage = () => {
         <motion.div
           initial={{
             opacity: 0,
+            width: "50%",
           }}
           animate={{
             opacity: 1,
+            width: "95%",
           }}
           transition={{
             duration: 0.8,
           }}
-          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg"
+          className="w-[95%] border p-2 rounded-sm border-gray-800 dark:border-gray-200 shadow-lg shadow-gray-500ß"
           whileHover={{
             scale: 1.025,
             transition: { duration: 0.5 },
@@ -60,19 +62,31 @@ export const WorkPage = () => {
             the internal chatbot web app: <strong>BiBot</strong> <br /> * Front
             end development of the bearing marketplace from scratch:{" "}
             <strong>Bearing Online</strong> ({" "}
-            <Link to="https://bearingonline.net/" target="_blank">
+            <Link
+              className="wrap-break-word"
+              to="https://bearingonline.net/"
+              target="_blank"
+            >
               https://bearingonline.net/
             </Link>
             )
             <br /> * Front end development of factory control portal & logistics
             platform: <strong>DigiFact & LogiFact</strong> (
-            <Link target="_blank" to="https://bosphorusiss.com/platformlar">
+            <Link
+              className="wrap-break-word"
+              target="_blank"
+              to="https://bosphorusiss.com/platformlar"
+            >
               https://bosphorusiss.com/platformlar
             </Link>
             )
             <br />* Front end development of C2C Web platform:{" "}
             <strong>Local & Traveler</strong> (
-            <Link to="https://localandtraveler.com" target="_blank">
+            <Link
+              className="wrap-break-word"
+              to="https://localandtraveler.com"
+              target="_blank"
+            >
               https://localandtraveler.com
             </Link>
             )
@@ -94,9 +108,11 @@ export const WorkPage = () => {
         <motion.div
           initial={{
             opacity: 0,
+            width: "50%",
           }}
           animate={{
             opacity: 1,
+            width: "95%",
           }}
           transition={{
             duration: 0.8,
@@ -140,9 +156,11 @@ export const WorkPage = () => {
         <motion.div
           initial={{
             opacity: 0,
+            width: "50%",
           }}
           animate={{
             opacity: 1,
+            width: "95%",
           }}
           transition={{
             duration: 0.8,
@@ -184,9 +202,11 @@ export const WorkPage = () => {
         <motion.div
           initial={{
             opacity: 0,
+            width: "50%",
           }}
           animate={{
             opacity: 1,
+            width: "95%",
           }}
           transition={{
             duration: 0.8,
@@ -231,9 +251,11 @@ export const WorkPage = () => {
         <motion.div
           initial={{
             opacity: 0,
+            width: "50%",
           }}
           animate={{
             opacity: 1,
+            width: "95%",
           }}
           transition={{
             duration: 0.8,
@@ -273,9 +295,11 @@ export const WorkPage = () => {
         <motion.div
           initial={{
             opacity: 0,
+            width: "50%",
           }}
           animate={{
             opacity: 1,
+            width: "95%",
           }}
           transition={{
             duration: 0.8,
