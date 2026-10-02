@@ -17,9 +17,10 @@ export default function Header() {
 
   const sections = useMemo(
     () => [
-      { id: "about", label: "About" },
-      { id: "work", label: "Work" },
-      { id: "cv", label: "CV" },
+      { id: "about", label: "About", hideMobile: false },
+      { id: "work", label: "Work", hideMobile: false },
+      { id: "cv", label: "CV", hideMobile: false },
+      { id: "dinogame", label: "Dino Game", hideMobile: true },
     ],
     [],
   );
@@ -46,10 +47,13 @@ export default function Header() {
       <ThemeToggle />
       <nav className="ml-auto max-w-3xl px-2 relative">
         <ul className="hidden h-14 items-center gap-6 md:flex">
-          {sections.map(({ id, label }) => {
+          {sections.map(({ id, label, hideMobile }) => {
             const isActive = activeId === id;
             return (
-              <li key={id}>
+              <li
+                className={`${hideMobile ? "hidden md:block" : "block"}`}
+                key={id}
+              >
                 <button
                   onClick={(e) => {
                     setActiveId(id);
@@ -86,10 +90,13 @@ export default function Header() {
         {dropdownOpen && (
           <div className="absolute z-10 bg-gray-200 divide-y right-0 divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
             <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-              {sections.map(({ id, label }) => {
+              {sections.map(({ id, label, hideMobile }) => {
                 const isActive = activeId === id;
                 return (
-                  <li key={id}>
+                  <li
+                    className={`${hideMobile ? "hidden md:block" : "block"}`}
+                    key={id}
+                  >
                     <button
                       onClick={(e) => {
                         setActiveId(id);

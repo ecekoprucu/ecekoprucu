@@ -7,6 +7,7 @@ import { WorkPage } from "../pages/Work";
 import ScrollToTop from "../components/ScrollToTop";
 import CvPage from "../pages/CvPage";
 import KonamiCode from "../components/KonamiCode";
+import DinoGamePage from "../pages/DinoGame";
 
 export const AppRouter = () => {
   return (
@@ -34,6 +35,14 @@ export const AppRouter = () => {
           element={
             <Suspense fallback={<Loader />}>
               <CvPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="dinogame"
+          element={
+            <Suspense fallback={<Loader />}>
+              <DinoGamePage />
             </Suspense>
           }
         />
