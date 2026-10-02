@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import cvPdf from "../assets/ecekoprucu_cv.pdf";
 
 export default function CvPage() {
   return (
@@ -12,7 +13,7 @@ export default function CvPage() {
       <iframe
         height="100%"
         width="100%"
-        src={"../src/assets/ecekoprucu_cv.pdf"}
+        src={cvPdf}
         frameBorder={0}
       />
     </div>
