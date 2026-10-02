@@ -6,11 +6,13 @@ export const AboutPage = () => {
   const textRef2 = useRef(null);
   const textRef3 = useRef(null);
   const textRef4 = useRef(null);
+  const textRef5 = useRef(null);
 
   const inView1 = useInView(textRef, { once: true });
   const inView2 = useInView(textRef2, { once: true });
   const inView3 = useInView(textRef3, { once: true });
   const inView4 = useInView(textRef4, { once: true });
+  const inView5 = useInView(textRef5, { once: true });
 
   return (
     <section id="about">
@@ -75,8 +77,13 @@ export const AboutPage = () => {
           <b>hold a valid work permit in Sweden</b>.
         </motion.p>
         <br />
-
-        <motion.p>
+        <motion.p
+          ref={textRef5}
+          initial={{ opacity: 0 }}
+          animate={inView5 ? { opacity: 1 } : undefined}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full text-gray-800 dark:text-gray-200 font-poppins"
+        >
           This site includes confettis triggered via <i>Konami Code</i>.
         </motion.p>
       </div>
