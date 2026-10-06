@@ -1,16 +1,21 @@
-FROM node:lts
+FROM node:lts as build
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY package*.json package-lock.json ./
 
-RUN npm ci --include=optional
+RUN npm ci
 
-COPY . .
+COPY ./ ./
 
-# Keep the container's Linux node_modules when the project is bind-mounted over /app
-VOLUME /app/node_modules
+RUN npm run build
 
-EXPOSE 5173
+FROM nginx:stable-alpine as production
 
-CMD ["npm", "run", "dev"]
+COPY --from=build /usr/src/app/nginx /etc/nginx/conf.d
+
+COPY --from=build /usr/src/app/dist /usr/share/nginx/html
+
+EXPOSE 80
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"] 
