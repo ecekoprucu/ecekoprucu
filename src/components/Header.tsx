@@ -1,7 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ThemeToggle } from "./ThemeToggle";
 
-import { useCallback, useMemo, useState, type MouseEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  type MouseEvent,
+} from "react";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useLocation, useNavigate } from "react-router";
 
@@ -42,6 +48,10 @@ export default function Header() {
     [navigate],
   );
 
+  useEffect(() => {
+    setActiveId(pathname === "/" ? "about" : pathname.substring(1));
+  }, [pathname]);
+
   return (
     <header className="sticky flex justify-start w-screen items-center h-12 bg-gray-100 dark:bg-gray-900">
       <ThemeToggle />
@@ -67,8 +77,8 @@ export default function Header() {
                     {label}
                     <span
                       className={
-                        "pointer-events-none absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gray-600 dark:bg-gray-200 transition-transform duration-300 " +
-                        (isActive ? "scale-x-100" : "")
+                        "pointer-events-none absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gray-600 dark:bg-gray-200 transition-transform duration-300! " +
+                        (isActive ? "scale-x-100" : "scale-x-0")
                       }
                     />
                   </span>

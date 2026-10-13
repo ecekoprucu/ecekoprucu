@@ -29,6 +29,22 @@ body {
   min-height: 100vh;
 }
 
+@layer base {
+  body * {
+    transition-property: color, background-color, border-color, fill, stroke;
+    transition-duration: 500ms;
+  }
+}
+
+html.theme-switching::view-transition-old(root),
+html.theme-switching::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+html.theme-switching::view-transition-new(root) {
+  z-index: 1;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

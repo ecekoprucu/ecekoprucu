@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import Header from "../components/Header";
 
 export default function DinoGamePage() {
   const dinoRef = useRef<HTMLDivElement>(null);
@@ -127,42 +126,42 @@ export default function DinoGamePage() {
   }, [jump]);
 
   return (
-    <>
-      <Header />
-      <div className="font-poppins w-screen h-[calc(100vh_-_3rem)] bg-gray-200 dark:bg-gray-700 px-3 py-6 flex flex-col items-center justify-center gap-10">
-        <div className="block md:hidden">
-          <p className="text-center text-3xl font-poppins mt-5">
-            It's not mobile ready yet
-          </p>
-        </div>
-        <div className="hidden md:block">
-          <div className="w-[600px] h-[300px] border border-black dark:border-white relative m-auto overflow-hidden">
-            <div
-              className="h-[75px] w-[75px] bg-[url('assets/dinosaur.png')] bg-cover absolute z-2 bottom-0"
-              ref={dinoRef}
-            ></div>
-            <div
-              className="h-[50px] w-[25px] bg-violet-500 absolute z-1 bottom-0 right-0"
-              ref={obstacleRef}
-            ></div>
-          </div>
-          <div
-            ref={scoreRef}
-            className="text-center text-3xl font-poppins mt-5 text-black dark:text-white"
-          >
-            0
-          </div>
-          <button
-            onClick={(e) => {
-              e.currentTarget.blur();
-              resetGame();
-            }}
-            className="w-full !text-black dark:!text-white border !border-black dark:!border-white !rounded-full px-5 py-2.5 mt-5 hover:bg-gray-300 dark:hover:bg-gray-600"
-          >
-            Reset
-          </button>
-        </div>
+    <div className="font-poppins w-screen h-[calc(100vh_-_3rem)] bg-gray-200 dark:bg-gray-700 px-3 py-6 flex flex-col items-center justify-center gap-10">
+      <div className="block md:hidden">
+        <p className="text-center text-3xl font-poppins mt-5">
+          It's not mobile ready yet
+        </p>
       </div>
-    </>
+      <div className="hidden md:block">
+        <div className="w-[600px] h-[300px] border border-black dark:border-white relative m-auto overflow-hidden">
+          <div
+            id="dino"
+            className="h-[75px] w-[75px] bg-[url('assets/dinosaur.png')] bg-cover absolute z-2 bottom-0"
+            ref={dinoRef}
+          ></div>
+          <div
+            id="obstacle"
+            className="h-[50px] w-[25px] bg-violet-500 absolute z-1 bottom-0 right-0"
+            ref={obstacleRef}
+          ></div>
+        </div>
+        <div
+          id="score"
+          ref={scoreRef}
+          className="text-center text-3xl font-poppins mt-5 text-black dark:text-white"
+        >
+          0
+        </div>
+        <button
+          onClick={(e) => {
+            e.currentTarget.blur();
+            resetGame();
+          }}
+          className="w-full !text-black dark:!text-white border !border-black dark:!border-white !rounded-full px-5 py-2.5 mt-5 hover:bg-gray-300 dark:hover:bg-gray-600"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
   );
 }
