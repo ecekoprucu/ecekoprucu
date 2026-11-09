@@ -133,7 +133,7 @@ export default function DinoGamePage() {
         </p>
       </div>
       <div className="hidden md:block">
-        <div className="w-[600px] h-[300px] border border-black dark:border-white relative m-auto overflow-hidden">
+        <div className="w-[600px] h-[300px] border border-black dark:border-white relative m-auto overflow-hidden bg-[url('assets/nature.webp')]">
           <div
             id="dino"
             className="h-[75px] w-[75px] bg-[url('assets/dinosaur.png')] bg-cover absolute z-2 bottom-0"
@@ -141,7 +141,7 @@ export default function DinoGamePage() {
           ></div>
           <div
             id="obstacle"
-            className="h-[50px] w-[25px] bg-violet-500 absolute z-1 bottom-0 right-0"
+            className="h-[50px] w-[25px] bg-violet-500 absolute z-1 bottom-0 right-0 border-2 border-black"
             ref={obstacleRef}
           ></div>
         </div>
