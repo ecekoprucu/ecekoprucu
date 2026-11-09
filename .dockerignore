@@ -13,3 +13,5 @@ Dockerfile
 README.md
 .vscode
 .idea
+deploy.sh
+deploy.env

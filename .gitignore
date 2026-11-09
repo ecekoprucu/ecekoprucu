@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Deploy settings (server IP, AWS account)
+deploy.env
