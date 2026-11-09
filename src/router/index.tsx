@@ -1,14 +1,15 @@
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { FrontPage } from "../pages/Front";
-import Loader from "../components/Loader";
+import { PageLoader } from "../components/Loader";
 import NotFoundPage from "../pages/NotFound";
 import { WorkPage } from "../pages/Work";
 import ScrollToTop from "../components/ScrollToTop";
-import CvPage from "../pages/CvPage";
 import KonamiCode from "../components/KonamiCode";
 import DinoGamePage from "../pages/DinoGame";
 import { PageWrapper } from "../components/PageWrapper";
+
+const CvPage = lazy(() => import("../pages/CvPage"));
 
 export const AppRouter = () => {
   return (
@@ -18,7 +19,7 @@ export const AppRouter = () => {
         <Route
           path="/"
           element={
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<PageLoader />}>
               <FrontPage />
             </Suspense>
           }
@@ -27,7 +28,7 @@ export const AppRouter = () => {
           <Route
             path="/work"
             element={
-              <Suspense fallback={<Loader />}>
+              <Suspense fallback={<PageLoader />}>
                 <section id="work">
                   <WorkPage />
                 </section>
@@ -37,17 +38,15 @@ export const AppRouter = () => {
           <Route
             path="cv"
             element={
-              <Suspense fallback={<Loader />}>
-                <div style={{ height: "calc(100vh - 48px)", width: "100vw" }}>
-                  <CvPage />
-                </div>
+              <Suspense fallback={<PageLoader />}>
+                <CvPage />
               </Suspense>
             }
           />
           <Route
             path="dinogame"
             element={
-              <Suspense fallback={<Loader />}>
+              <Suspense fallback={<PageLoader />}>
                 <DinoGamePage />
               </Suspense>
             }
@@ -56,7 +55,7 @@ export const AppRouter = () => {
         <Route
           path="*"
           element={
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<PageLoader />}>
               <NotFoundPage />
             </Suspense>
           }
