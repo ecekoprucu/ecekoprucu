@@ -11,6 +11,8 @@ interface MousePosition {
   y: number;
 }
 
+const MAX_DT = 1 / 30;
+
 class Starfield {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
@@ -19,6 +21,12 @@ class Starfield {
   private mouse: MousePosition = { x: 0, y: 0 };
   private isDarkMode: boolean;
   private lastTime: number = 0;
+  private frameId: number | null = null;
+  private onResize = () => this.resizeCanvas();
+  private onMouseMove = (event: MouseEvent) => this.handleMouseMove(event);
+  private onVisibilityChange = () => {
+    if (!document.hidden) this.lastTime = performance.now();
+  };
 
   constructor(canvasId: string, numStars: number = 100, isDarkMode = true) {
     const canvas = document.getElementById(
@@ -38,15 +46,31 @@ class Starfield {
     this.isDarkMode = isDarkMode;
 
     this.resizeCanvas();
-    window.addEventListener("resize", this.resizeCanvas.bind(this));
-    this.canvas.addEventListener("mousemove", this.handleMouseMove.bind(this));
+    window.addEventListener("resize", this.onResize);
+    this.canvas.addEventListener("mousemove", this.onMouseMove);
+    document.addEventListener("visibilitychange", this.onVisibilityChange);
 
     this.initStars();
   }
 
   private resizeCanvas(): void {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
+    const prevWidth = this.canvas.width;
+    const prevHeight = this.canvas.height;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    this.canvas.width = width;
+    this.canvas.height = height;
+
+    // Keep stars inside the new viewport instead of stranding them off-screen.
+    if (prevWidth > 0 && prevHeight > 0) {
+      const scaleX = width / prevWidth;
+      const scaleY = height / prevHeight;
+      this.stars.forEach((s) => {
+        s.x = Math.min(Math.max(s.x * scaleX, 0), width);
+        s.y = Math.min(Math.max(s.y * scaleY, 0), height);
+      });
+    }
   }
 
   private initStars(): void {
@@ -117,27 +141,54 @@ class Starfield {
   }
 
   private update(dt: number): void {
+    const width = this.canvas.width;
+    const height = this.canvas.height;
+
     this.stars.forEach((s) => {
       s.x += s.vx * dt;
       s.y += s.vy * dt;
 
-      if (s.x < 0 || s.x > this.canvas.width) s.vx = -s.vx;
-      if (s.y < 0 || s.y > this.canvas.height) s.vy = -s.vy;
+      // Bounce at the edge and clamp, so a star can never end up off-canvas.
+      if (s.x < 0) {
+        s.x = 0;
+        s.vx = -s.vx;
+      } else if (s.x > width) {
+        s.x = width;
+        s.vx = -s.vx;
+      }
+      if (s.y < 0) {
+        s.y = 0;
+        s.vy = -s.vy;
+      } else if (s.y > height) {
+        s.y = height;
+        s.vy = -s.vy;
+      }
     });
   }
 
   public start(): void {
     const tick = (time: number) => {
-      const dt = (time - this.lastTime) / 1000;
+      const dt = Math.min((time - this.lastTime) / 1000, MAX_DT);
       this.lastTime = time;
       this.draw();
       this.update(dt);
-      requestAnimationFrame(tick);
+      this.frameId = requestAnimationFrame(tick);
     };
-    requestAnimationFrame((time) => {
+    this.frameId = requestAnimationFrame((time: number) => {
       this.lastTime = time;
-      requestAnimationFrame(tick);
+      this.frameId = requestAnimationFrame(tick);
     });
+  }
+
+  public destroy(): void {
+    if (this.frameId !== null) {
+      cancelAnimationFrame(this.frameId);
+      this.frameId = null;
+    }
+    window.removeEventListener("resize", this.onResize);
+    this.canvas.removeEventListener("mousemove", this.onMouseMove);
+    document.removeEventListener("visibilitychange", this.onVisibilityChange);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 }
 
@@ -145,7 +196,8 @@ export default function initStarfield(
   canvasId: string,
   numStars = 100,
   isDarkMode = true,
-) {
+): () => void {
   const starfield = new Starfield(canvasId, numStars, isDarkMode);
   starfield.start();
+  return () => starfield.destroy();
 }

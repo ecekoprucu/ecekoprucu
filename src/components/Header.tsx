@@ -93,8 +93,9 @@ export default function Header() {
           onClick={() => setDropdownOpen((prev) => !prev)}
         >
           <FontAwesomeIcon
+            size="lg"
             icon={faBars}
-            className="text-gray-600 dark:text-slate-400"
+            className=" text-gray-600 dark:text-slate-400"
           />
         </button>
         {dropdownOpen && (

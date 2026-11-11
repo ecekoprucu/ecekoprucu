@@ -11,7 +11,12 @@ export const FrontPage = () => {
   const isMobileDevice = /Mobi/i.test(window.navigator.userAgent);
 
   useEffect(() => {
-    initStarfield("canvas", isMobileDevice ? 50 : 250, theme === "dark");
+    const destroy = initStarfield(
+      "canvas",
+      isMobileDevice ? 50 : 250,
+      theme === "dark",
+    );
+    return destroy;
   }, [theme, isMobileDevice]);
 
   return (
